@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kennel — a node-based agentic IDE</title>
+<meta name="description" content="Kennel turns AI-assisted development into a canvas of states. Every node is a real, git-versioned state of your codebase — branch it, compare it, build on it. Free for macOS." />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<meta name="theme-color" content="#0a0b10" />
+<link rel="canonical" href="https://kennel-website.vercel.app/" />
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://kennel-website.vercel.app/" />
+<meta property="og:site_name" content="Kennel" />
+<meta property="og:title" content="Kennel — a node-based agentic IDE" />
+<meta property="og:description" content="Development as a canvas of states. Every node is a real, git-versioned state of your codebase. Free for macOS." />
+<meta property="og:image" content="https://kennel-website.vercel.app/assets/providers.jpg" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="873" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kennel — a node-based agentic IDE" />
+<meta name="twitter:description" content="Development as a canvas of states. Free for macOS." />
+<meta name="twitter:image" content="https://kennel-website.vercel.app/assets/providers.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ SVG icon sprite (lucide) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.94 14.06A2 2 0 0 0 8.5 12.6l-5.1-1.3a.5.5 0 0 1 0-1l5.1-1.3A2 2 0 0 0 9.94 7.6l1.3-5.1a.5.5 0 0 1 1 0l1.3 5.1a2 2 0 0 0 1.46 1.46l5.1 1.3a.5.5 0 0 1 0 1l-5.1 1.3a2 2 0 0 0-1.46 1.46l-1.3 5.1a.5.5 0 0 1-1 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></symbol>
+    <symbol id="i-footprints" viewBox="0 0 24 24"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol>
+    <symbol id="i-branch" viewBox="0 0 24 24"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-workflow" viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" stroke-width="1.7"/><path d="M10 2c1 .5 2 2 2 5" stroke-width="1.7"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ Nav ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><img src="assets/app.png" alt="" /> Kennel</a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#models">Local AI</a>
+      <a href="#download">Download</a>
+    </nav>
+    <div class="nav-right">
+      <a class="icon-link" href="https://github.com/rishijohri/kennel" target="_blank" rel="noopener" aria-label="Kennel on GitHub" title="GitHub"><svg class="icon"><use href="#i-github"/></svg></a>
+      <a class="btn btn-primary" href="https://github.com/rishijohri/kennel/releases/latest/download/Kennel-0.1.0-universal.dmg"><svg class="icon"><use href="#i-download"/></svg> Download</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge"><span class="dot"></span> Free for macOS · signed &amp; notarized</span>
+      <h1>Your codebase as a <span class="grad-iris">canvas of states</span>.</h1>
+      <p class="lede">Kennel is a node-based agentic IDE. Every agent run and every command becomes a real, <strong>git-versioned node</strong> you can branch from, compare, and build on — no more disposable chat transcripts.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://github.com/rishijohri/kennel/releases/latest/download/Kennel-0.1.0-universal.dmg"><svg class="icon"><use href="#i-apple"/></svg> Download for macOS</a>
+        <a class="btn btn-subtle btn-lg" href="https://github.com/rishijohri/kennel" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg> View source</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg class="icon"><use href="#i-check"/></svg> Universal (Apple Silicon + Intel)</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> Notarized — opens cleanly</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> macOS 11+</span>
+      </div>
+    </div>
+
+    <!-- canvas mock -->
+    <div class="canvas-mock reveal" id="canvasMock">
+      <div class="dotgrid"></div>
+      <div class="canvas-stage" id="canvasStage">
+        <svg class="edges" id="edges" viewBox="0 0 440 420" preserveAspectRatio="none"></svg>
+
+        <div class="node sel" id="n-root" style="left:14px; top:8px; width:170px;">
+          <div class="node-top">
+            <span class="kind-tile t-iris"><svg class="icon"><use href="#i-box"/></svg></span>
+            <span class="node-title">main</span>
+          </div>
+          <div class="node-foot mono" style="color:var(--ink-faint)">project root · a1c9f2</div>
+        </div>
+
+        <div class="node" id="n-impl" style="left:132px; top:118px; width:188px;">
+          <div class="node-top">
+            <span class="kind-tile t-iris"><svg class="icon"><use href="#i-sparkles"/></svg></span>
+            <span class="node-title">Implement OAuth</span>
+            <span class="pill pill-run">Running</span>
+          </div>
+          <div class="node-sub">Walker · agentic step on a balanced leash</div>
+        </div>
+
+        <div class="node" id="n-test" style="left:4px; top:296px; width:178px;">
+          <div class="node-top">
+            <span class="kind-tile t-amber"><svg class="icon"><use href="#i-terminal"/></svg></span>
+            <span class="node-title">npm test</span>
+            <span class="pill pill-done"><svg class="icon"><use href="#i-check"/></svg> Passed</span>
+          </div>
+          <div class="node-foot mono" style="color:var(--ink-faint)">deterministic · exit 0</div>
+        </div>
+
+        <div class="node active" id="n-refactor" style="left:236px; top:296px; width:188px;">
+          <div class="node-top">
+            <span class="kind-tile t-mint"><svg class="icon"><use href="#i-check-circle"/></svg></span>
+            <span class="node-title">Refactor store</span>
+            <span class="pill pill-done">Done</span>
+          </div>
+          <div class="node-foot mono"><span class="add-mint">+64</span> <span class="add-rose">−40</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Operators ============ -->
+<section id="operators">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow"><svg class="icon" style="width:13px;height:13px"><use href="#i-footprints"/></svg> The two operators</span>
+      <h2 class="section-title">A kennel keeps and tends working agents.</h2>
+      <p class="section-sub">Two off-canvas operators embody the metaphor — one builds the hounds, one walks them through the graph.</p>
+    </div>
+    <div class="ops-grid">
+      <div class="op-card op-iris reveal">
+        <div class="glow"></div>
+        <div class="op-head">
+          <img src="assets/caretaker.png" alt="Care Taker" />
+          <div>
+            <div class="op-name">Care Taker</div>
+            <div class="op-tag">Tends the kennel</div>
+          </div>
+        </div>
+        <p>Designs reusable agent <strong>personas</strong> — with scoped permissions — and deterministic <strong>processes</strong> that are tested in isolation, with named, Airflow-XCom-style input/output contracts.</p>
+        <div class="op-chips">
+          <span class="chip"><svg class="icon"><use href="#i-shield"/></svg> Scoped permissions</span>
+          <span class="chip"><svg class="icon"><use href="#i-terminal"/></svg> Tested processes</span>
+          <span class="chip"><svg class="icon"><use href="#i-layers"/></svg> Named I/O contracts</span>
+        </div>
+      </div>
+      <div class="op-card op-mint reveal">
+        <div class="glow"></div>
+        <div class="op-head">
+          <img src="assets/walker.png" alt="Walker" />
+          <div>
+            <div class="op-name">Walker</div>
+            <div class="op-tag">Walks the graph</div>
+          </div>
+        </div>
+        <p>The autonomous orchestrator. It spawns and reads canvas nodes to plan and execute multi-step work — always on an <strong>autonomy leash</strong> (a node budget) you control.</p>
+        <div class="op-chips">
+          <span class="chip"><svg class="icon"><use href="#i-shield"/></svg> Cautious ≤3</span>
+          <span class="chip"><svg class="icon"><use href="#i-footprints"/></svg> Balanced ≤8</span>
+          <span class="chip"><svg class="icon"><use href="#i-zap"/></svg> Autonomous ≤25</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Video ============ -->
+<section id="see-it" style="padding-top:24px">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow"><svg class="icon" style="width:13px;height:13px"><use href="#i-sparkles"/></svg> See it move</span>
+      <h2 class="section-title">The canvas, in motion.</h2>
+    </div>
+    <div class="video-frame reveal">
+      <video src="assets/intro.mp4" poster="assets/intro-poster.jpg" controls muted loop playsinline preload="metadata"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Features ============ -->
+<section id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><svg class="icon" style="width:13px;height:13px"><use href="#i-layers"/></svg> What's inside</span>
+      <h2 class="section-title">Everything is a node. Every node is real.</h2>
+      <p class="section-sub">No stubs, no simulations — real git commits, real model calls, real tools.</p>
+    </div>
+    <div class="features">
+      <div class="feature reveal">
+        <div class="ftile t-iris"><svg class="icon"><use href="#i-branch"/></svg></div>
+        <h3>Git-versioned states</h3>
+        <p>Each node is a real commit. Branch from any node to explore alternatives in parallel, diff them side by side, and check out any state.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ftile t-mint"><svg class="icon"><use href="#i-footprints"/></svg></div>
+        <h3>Walker orchestration</h3>
+        <p>Hand the wheel to an autonomous agent that plans and runs multi-step work across the graph — within the autonomy budget you set.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ftile t-iris"><svg class="icon"><use href="#i-sparkles"/></svg></div>
+        <h3>Personas &amp; processes</h3>
+        <p>The Care Taker builds reusable agent personas and deterministic, tested processes with named input/output contracts.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ftile t-blue"><svg class="icon"><use href="#i-workflow"/></svg></div>
+        <h3>Parks — workflows</h3>
+        <p>Declarative multi-node workflows: per-node outputs, tunable edge conditions, isolated workspaces, Report nodes, and cron scheduling.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ftile t-mint"><svg class="icon"><use href="#i-cpu"/></svg></div>
+        <h3>Local &amp; cloud models</h3>
+        <p>Bring keys for Anthropic, OpenAI &amp; Google — or run fully local with on-demand llama.cpp and recommended open models.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ftile t-amber"><svg class="icon"><use href="#i-plug"/></svg></div>
+        <h3>Web search &amp; MCP</h3>
+        <p>Keyless web search for agents, plus a real Model Context Protocol client to connect external tools and data sources.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ How it works ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><svg class="icon" style="width:13px;height:13px"><use href="#i-branch"/></svg> How it works</span>
+      <h2 class="section-title">From a repo to a graph of work.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Open a project</h3><p>Point Kennel at a git repo. The root node is your codebase's current state.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Add a step</h3><p>Drop an agentic node (persona-driven) or a deterministic command node onto the canvas.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Run it</h3><p>Kennel works in an isolated workspace and commits the result as a new, inspectable node.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>Branch &amp; build</h3><p>Compare diffs, check out any state, or let the Walker orchestrate many steps for you.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Local AI showcase ============ -->
+<section id="models">
+  <div class="wrap">
+    <div class="showcase reveal">
+      <div class="show-copy">
+        <span class="eyebrow"><svg class="icon" style="width:13px;height:13px"><use href="#i-cpu"/></svg> Local AI</span>
+        <h3>Run models entirely on your Mac.</h3>
+        <p>The llama.cpp engine is downloaded on demand and ad-hoc-signed locally — nothing heavy bundled, nothing phoning home. Recommended open models are a click away.</p>
+        <ul class="feat-list">
+          <li><svg class="icon"><use href="#i-check"/></svg> On-demand engine + curated open models</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Fully offline once downloaded</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> Skippable first-run setup</li>
+        </ul>
+      </div>
+      <div class="show-art"><img src="assets/local-ai.jpg" alt="Kennel local model setup" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Providers showcase ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="showcase flip reveal">
+      <div class="show-art"><img src="assets/providers.jpg" alt="Kennel AI providers" loading="lazy" /></div>
+      <div class="show-copy">
+        <span class="eyebrow"><svg class="icon" style="width:13px;height:13px"><use href="#i-server"/></svg> Your keys, your control</span>
+        <h3>Bring your own providers.</h3>
+        <p>Connect Anthropic, OpenAI, and Google with your own API keys. Keys are encrypted on-device with the system keychain and never leave your machine except to call the provider you chose.</p>
+        <ul class="feat-list">
+          <li><svg class="icon"><use href="#i-lock"/></svg> Keys encrypted at rest (safeStorage)</li>
+          <li><svg class="icon"><use href="#i-check"/></svg> No telemetry — only the calls you initiate</li>
+          <li><svg class="icon"><use href="#i-plug"/></svg> MCP servers for external tools</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Download CTA ============ -->
+<section id="download">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <img class="mark" src="assets/app.png" alt="Kennel" />
+      <h2>Start building on a canvas.</h2>
+      <p>Free, open-source, and notarized for macOS. Download the universal build and drag Kennel into Applications.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn btn-primary btn-lg" href="https://github.com/rishijohri/kennel/releases/latest/download/Kennel-0.1.0-universal.dmg"><svg class="icon"><use href="#i-download"/></svg> Download Kennel for macOS</a>
+        <a class="btn btn-subtle btn-lg" href="https://github.com/rishijohri/kennel" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg> Star on GitHub</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg class="icon"><use href="#i-check"/></svg> Universal · ~200&nbsp;MB</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> Signed &amp; notarized</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> MIT licensed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand"><img src="assets/app.png" alt="" /> Kennel</div>
+    <div class="foot-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="https://github.com/rishijohri/kennel" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/rishijohri/kennel/releases/latest" target="_blank" rel="noopener">Releases</a>
+    </div>
+    <div class="foot-copy">MIT © 2026 Rishi Johri</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
